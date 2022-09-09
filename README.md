@@ -1,4 +1,4 @@
-# vueapp
+# Projeto Base com VUE 2
 
 ## Instalação
 ```
@@ -32,12 +32,17 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ## Vue Loader
-```$xslt
+```
 npm install -D vue-loader vue-template-compiler
 ```
 
 ## PrimeVUE
-```$xslt
+### Documentação
+```
+https://www.primefaces.org/primevue-v2/#/
+```
+### Instalação
+```
 npm install primevue@^2.9.2 --save
 npm install primeicons --save
 ```
@@ -48,7 +53,6 @@ import 'primevue/resources/themes/saga-blue/theme.css'
 import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
 ```
-
 ### PrimeFlex v2
 ```
 https://github.com/primefaces/primeflex/wiki/PrimeFlex-v2
