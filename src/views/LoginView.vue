@@ -81,6 +81,11 @@
   & .p-button {
     margin: 10px 0 0;
   }
+  & a {
+    margin: 5px 0 2px;
+    text-decoration: none;
+    color: blue;
+  }
 }
 
 </style>
