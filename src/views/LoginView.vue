@@ -5,6 +5,12 @@
     </transition-group>
 
     <Panel header="Acesse sua Conta">
+      <div class="selectTypeUser">
+        <div v-for="myUser of typeUser" :key="myUser.key" class="field-radiobutton">
+          <RadioButton :inputId="myUser.key" name="myUser" :value="myUser.name" v-model="selectedTypeUser" :disabled="myUser.key === 'Get'" />
+          <label :for="myUser.key">{{myUser.name}}</label>
+        </div>
+      </div>
       <div class="p-d-flex p-flex-column">
         <label>Usuário:</label>
         <InputText type="text" v-model="yourUser"></InputText>
@@ -26,7 +32,7 @@
   import Button from 'primevue/button';
   import InputText from 'primevue/inputtext';
   import Password from 'primevue/password';
-
+  import RadioButton from 'primevue/radiobutton';
 
   export default {
     name: 'LoginView',
@@ -34,7 +40,8 @@
       Panel,
       Button,
       InputText,
-      Password
+      Password,
+      RadioButton
     },
     data() {
       return {
@@ -43,7 +50,13 @@
         yourUser: null,
         yourPassword: null,
         messages: [],
-        count: 0
+        count: 0,
+        typeUser: [
+          {name: 'Usuário', key: 'User'},
+          {name: 'Cooperativa', key: 'Coop'},
+          {name: 'Catador', key: 'Get'},
+        ],
+        selectedTypeUser: null
       }
     },
     methods: {
@@ -57,6 +70,9 @@
       removeMessages() {
         this.messages = null;
       }
+    },
+    created() {
+      this.selectedTypeUser = this.typeUser[1].name;
     }
   }
 </script>
@@ -85,6 +101,16 @@
     margin: 5px 0 2px;
     text-decoration: none;
     color: blue;
+  }
+  & .selectTypeUser {
+    & .field-radiobutton {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      & label {
+        margin-left: 6px;
+      }
+    }
   }
 }
 
