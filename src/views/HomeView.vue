@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="home__logo">
-      <img alt="Vue logo" src="../assets/logo.png">
+      <img alt="Vue logo" src="../assets/icon.png">
     </div>
     <div class="home__info">
       <transition-group name="p-messages" tag="div">
@@ -59,7 +59,6 @@ export default {
       typeUser: [
         {name: 'Usuário', key: 'User'},
         {name: 'Cooperativa', key: 'Coop'},
-        {name: 'Catador', key: 'Get'},
       ],
       selectedTypeUser: null
     }
@@ -91,7 +90,11 @@ export default {
   justify-content: space-evenly;
   padding: 60px 0;
   &__logo {
-
+    background: white;
+    border-radius: 100%;
+    & img {
+      width: 300px;
+    }
   }
   &__info {
     background: white;

@@ -1,0 +1,29 @@
+$azulEscuro: #2F82B4;
+$azulMedio: #339cd9;
+$azulClaro: #3BB1F7;
+$verde: #00D1B2;
+$vermelho: #F14668;
+$cinzaEscuro: #666666;
+$cinza: #cfcfcf;
+$branco: #ffffff;
+$preto: #333333;
+$transparente: none;
+
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@mixin for-phone-only {
+  @media (max-width: 640.98px) { @content; }
+}
+@mixin for-tablet-only {
+  @media (min-width: 641px) and (max-width: 1024.98px) { @content; }
+}
+@mixin for-desktop-only {
+  @media (min-width: 1025px) and (max-width: 1920.98px) { @content; }
+}
+@mixin for-2k-only {
+  @media (min-width: 1921px) and (max-width: 2880.98px) { @content; }
+}
+@mixin for-4k-only {
+  @media (min-width: 2881px) { @content; }
+}

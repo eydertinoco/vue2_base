@@ -8,7 +8,7 @@
 
     <Button label="Enviar Email"></Button>
 
-    <router-link to="/login">Acessar Conta</router-link>
+    <router-link to="/">Acessar Conta</router-link>
 
   </div>
 </template>

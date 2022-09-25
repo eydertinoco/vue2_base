@@ -38,6 +38,11 @@ const routes = [
     name: 'senharecuperada',
     component: () => import(/* webpackChunkName: "about" */ '../views/SenhaRecuperadaView.vue')
   },
+  {
+    path: '/minhapagina',
+    name: 'minhapagina',
+    component: () => import(/* webpackChunkName: "about" */ '../views/UserView.vue')
+  },
 ]
 
 const router = new VueRouter({
