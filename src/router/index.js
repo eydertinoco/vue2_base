@@ -27,7 +27,17 @@ const routes = [
     path: '/criarconta',
     name: 'criarconta',
     component: () => import(/* webpackChunkName: "about" */ '../views/CriarContaView.vue')
-  }
+  },
+  {
+    path: '/esquecisenha',
+    name: 'esquecisenha',
+    component: () => import(/* webpackChunkName: "about" */ '../views/EsqueciSenhaView.vue')
+  },
+  {
+    path: '/senharecuperada',
+    name: 'senharecuperada',
+    component: () => import(/* webpackChunkName: "about" */ '../views/SenhaRecuperadaView.vue')
+  },
 ]
 
 const router = new VueRouter({

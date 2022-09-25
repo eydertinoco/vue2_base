@@ -1,77 +1,136 @@
 <template>
   <div class="home">
-    <Button label="Submit" icon="pi pi-check" iconPos="right" />
-    <div>
-      <Calendar inputId="basic" v-model="date1" autocomplete="off" />
+    <div class="home__logo">
+      <img alt="Vue logo" src="../assets/logo.png">
     </div>
+    <div class="home__info">
+      <transition-group name="p-messages" tag="div">
+        <Message v-for="msg of messages" :severity="msg.severity" :key="msg.content">{{msg.content}}</Message>
+      </transition-group>
 
+      <Panel header="Acesse sua Conta">
+        <div class="selectTypeUser">
+          <div v-for="myUser of typeUser" :key="myUser.key" class="field-radiobutton">
+            <RadioButton :inputId="myUser.key" name="myUser" :value="myUser.name" v-model="selectedTypeUser" :disabled="myUser.key === 'Get'" />
+            <label :for="myUser.key">{{myUser.name}}</label>
+          </div>
+        </div>
+        <div class="p-d-flex p-flex-column">
+          <label>Usuário:</label>
+          <InputText type="text" v-model="yourUser"></InputText>
+          <label>Senha:</label>
+          <Password v-model="yourPassword" toggleMask></Password>
 
-    <div class="p-d-inline">Displayed as inline.</div>
-    <div class="p-d-flex">Displayed as a flexbox container.</div>
-    <div class="p-d-block p-d-lg-inline">Inline for larger screens and block for others.</div>
-    <div class="p-d-md-none">Visible on a Small Screen</div>
-    <div class="p-d-none p-d-md-inline-flex">Hidden on a Small Screen</div>
-    <div class="p-d-none p-d-print-block">Only visible when printed.</div>
-    <div class="p-d-block p-d-print-none">Not available for printing.</div>
+          <Button label="Entrar"></Button>
 
-    <div class="p-d-flex">
-      <div class="p-mr-2">Item 1</div>
-      <div class="p-mr-2">Item 2</div>
-      <div>Item 3</div>
+          <router-link to="/esquecisenha">Esqueci minha senha</router-link>
+          <router-link to="/criarconta">Criar conta</router-link>
+        </div>
+      </Panel>
     </div>
-    <div class="p-d-flex p-flex-column">
-      <div class="p-mb-2">Item 1</div>
-      <div class="p-mb-2">Item 2</div>
-      <div>Item 3</div>
-    </div>
-    <div class="p-d-flex p-flex-column p-flex-md-row">
-      <div class="p-mb-2 p-mr-2">Item 1</div>
-      <div class="p-mb-2 p-mr-2">Item 2</div>
-      <div class="p-mb-2 p-mr-2">Item 3</div>
-    </div>
-
-
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Panel from 'primevue/panel';
 import Button from 'primevue/button';
-import Calendar from 'primevue/calendar';
+import InputText from 'primevue/inputtext';
+import Password from 'primevue/password';
+import RadioButton from 'primevue/radiobutton';
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld,
+    Panel,
     Button,
-    Calendar
-  },
-  created() {
-    let today = new Date();
-    let month = today.getMonth();
-    let year = today.getFullYear();
-    let prevMonth = (month === 0) ? 11 : month -1;
-    let prevYear = (prevMonth === 11) ? year - 1 : year;
-    let nextMonth = (month === 11) ? 0 : month + 1;
-    let nextYear = (nextMonth === 0) ? year + 1 : year;
-    this.minDate = new Date();
-    this.minDate.setMonth(prevMonth);
-    this.minDate.setFullYear(prevYear);
-    this.maxDate = new Date();
-    this.maxDate.setMonth(nextMonth);
-    this.maxDate.setFullYear(nextYear);
-
-    let invalidDate = new Date();
-    invalidDate.setDate(today.getDate() - 1);
-    this.invalidDates = [today,invalidDate];
+    InputText,
+    Password,
+    RadioButton
   },
   data() {
     return {
-      date1: null,
+      mensagemValidacao: null,
+      statusValidacao: null,
+      yourUser: null,
+      yourPassword: null,
+      messages: [],
+      count: 0,
+      typeUser: [
+        {name: 'Usuário', key: 'User'},
+        {name: 'Cooperativa', key: 'Coop'},
+        {name: 'Catador', key: 'Get'},
+      ],
+      selectedTypeUser: null
     }
+  },
+  methods: {
+    addMessages() {
+      this.messages = [
+        {severity: 'info', content: 'Dynamic Info Message'},
+        {severity: 'success', content: 'Dynamic Success Message'},
+        {severity: 'warn', content: 'Dynamic Warning Message'}
+      ]
+    },
+    removeMessages() {
+      this.messages = null;
+    }
+  },
+  created() {
+    this.selectedTypeUser = this.typeUser[1].name;
   }
 }
 </script>
+
+<style scoped lang="scss">
+.home {
+  background-image: url("../assets/fotoInicial.jpeg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 60px 0;
+  &__logo {
+
+  }
+  &__info {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 50px 0;
+    & .p-panel {
+      margin: 0 auto;
+      max-width: 290px;
+      & .p-panel-title {
+        margin: 0;
+      }
+    }
+    & label {
+      display: flex;
+      justify-content: flex-start;
+      margin: 5px 0;
+    }
+    & .p-inputtext {
+      width: 100%;
+    }
+    & .p-button {
+      margin: 10px 0 0;
+    }
+    & a {
+      margin: 5px 0 2px;
+      text-decoration: none;
+      color: blue;
+    }
+    & .selectTypeUser {
+      & .field-radiobutton {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        & label {
+          margin-left: 6px;
+        }
+      }
+    }
+  }
+}
+</style>
