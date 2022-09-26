@@ -1,14 +1,17 @@
 <template>
   <div id="esqueciSenha">
 
-    <h1>Recuperar Email</h1>
+    <Panel header="Recuperar Senha">
+      <div class="p-d-flex p-flex-column">
+        <label>Email:</label>
 
-    <label>Email:</label>
-    <InputText type="text" v-model="yourEmail"></InputText>
+        <InputText type="text" v-model="yourEmail"></InputText>
 
-    <Button label="Enviar Email"></Button>
+        <Button label="Enviar Email"></Button>
 
-    <router-link to="/">Acessar Conta</router-link>
+        <router-link to="/">Acessar Conta</router-link>
+      </div>
+    </Panel>
 
   </div>
 </template>
@@ -16,12 +19,14 @@
 <script>
 import Button from "primevue/button";
 import InputText from "primevue/inputtext";
+import Panel from 'primevue/panel';
 
 export default {
   name: "EsqueciSenhaView",
   components: {
     Button,
-    InputText
+    InputText,
+    Panel
   },
   data() {
     return {
@@ -37,6 +42,25 @@ export default {
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 60px 0;
+  height: calc(100vh - 180px);
+  & .p-panel {
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+    & .p-panel-title {
+      margin: 0;
+    }
+  }
+  & label {
+    display: flex;
+    justify-content: flex-start;
+    margin: 5px 0;
+  }
+  & .p-inputtext {
+    width: 100%;
+  }
+  & .p-button {
+    margin: 10px 0 0;
+  }
 }
 </style>

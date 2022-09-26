@@ -1,32 +1,34 @@
 <template>
   <div class="home">
-    <div class="home__logo">
-      <img alt="Vue logo" src="../assets/icon.png">
-    </div>
-    <div class="home__info">
-      <transition-group name="p-messages" tag="div">
-        <Message v-for="msg of messages" :severity="msg.severity" :key="msg.content">{{msg.content}}</Message>
-      </transition-group>
+    <div class="home__shadow">
+      <div class="home__logo">
+        <img alt="Vue logo" src="../assets/icon.png">
+      </div>
+      <div class="home__info">
+        <transition-group name="p-messages" tag="div">
+          <Message v-for="msg of messages" :severity="msg.severity" :key="msg.content">{{msg.content}}</Message>
+        </transition-group>
 
-      <Panel header="Acesse sua Conta">
-        <div class="selectTypeUser">
-          <div v-for="myUser of typeUser" :key="myUser.key" class="field-radiobutton">
-            <RadioButton :inputId="myUser.key" name="myUser" :value="myUser.name" v-model="selectedTypeUser" :disabled="myUser.key === 'Get'" />
-            <label :for="myUser.key">{{myUser.name}}</label>
+        <Panel header="Acesse sua Conta">
+          <div class="selectTypeUser">
+            <div v-for="myUser of typeUser" :key="myUser.key" class="field-radiobutton">
+              <RadioButton :inputId="myUser.key" name="myUser" :value="myUser.name" v-model="selectedTypeUser" :disabled="myUser.key === 'Get'" />
+              <label :for="myUser.key">{{myUser.name}}</label>
+            </div>
           </div>
-        </div>
-        <div class="p-d-flex p-flex-column">
-          <label>Usuário:</label>
-          <InputText type="text" v-model="yourUser"></InputText>
-          <label>Senha:</label>
-          <Password v-model="yourPassword" toggleMask></Password>
+          <div class="p-d-flex p-flex-column">
+            <label>Usuário:</label>
+            <InputText type="text" v-model="yourUser"></InputText>
+            <label>Senha:</label>
+            <Password v-model="yourPassword" toggleMask></Password>
 
-          <Button label="Entrar"></Button>
+            <Button label="Entrar"></Button>
 
-          <router-link to="/esquecisenha">Esqueci minha senha</router-link>
-          <router-link to="/criarconta">Criar conta</router-link>
-        </div>
-      </Panel>
+            <router-link to="/esquecisenha">Esqueci minha senha</router-link>
+            <router-link to="/criarconta">Criar conta</router-link>
+          </div>
+        </Panel>
+      </div>
     </div>
   </div>
 </template>
@@ -85,10 +87,13 @@ export default {
 .home {
   background-image: url("../assets/fotoInicial.jpeg");
   background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 60px 0;
+  &__shadow {
+    background-color: #00000040;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: calc(100vh - 180px);
+  }
   &__logo {
     background: white;
     border-radius: 100%;

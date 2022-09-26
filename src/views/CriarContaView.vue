@@ -44,6 +44,15 @@
         <router-link to="/">Acessar Conta</router-link>
       </div>
     </Panel>
+
+    <div id="cadastroFinalizado">
+      <img alt="Project Logo" src="../assets/icon.png">
+
+      <div>
+        <p>Cadastro Finalizado</p>
+        <p>Acesse seu email para concluir o cadastro</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -98,13 +107,7 @@
 
 <style scoped lang="scss">
 #cadastro {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-image: url("../assets/fotoExemplo.jpeg");
-  background-size: cover;
-  background-position: bottom;
-  background-repeat: no-repeat;
+  background-color: #e1edf9;
   padding: 50px;
   & .p-panel {
     margin: 0 auto;
@@ -124,6 +127,20 @@
   }
   & .p-button {
     margin: 10px 0 0;
+  }
+}
+
+#cadastroFinalizado {
+  background: white;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  & img {
+    width: 200px;
   }
 }
 </style>

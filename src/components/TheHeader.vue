@@ -1,21 +1,30 @@
 <template>
   <div class="header">
     <div class="header__logo">
-      <img alt="Vue logo" src="../assets/icon.png">
+      <img alt="Project Logo" src="../assets/icon.png">
       <h1>Titulo do Projeto</h1>
     </div>
 
     <nav>
       <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
-      <router-link to="/minhapagina">Login</router-link>
+      <router-link to="/minhapagina">
+        <Avatar icon="pi pi-user" size="large" shape="circle"/>
+      </router-link>
     </nav>
+
+
   </div>
 </template>
 
 <script>
+import Avatar from 'primevue/avatar';
+
 export default {
-  name: "TheHeader"
+  name: "TheHeader",
+  components: {
+    Avatar,
+  },
 }
 </script>
 
@@ -27,6 +36,7 @@ export default {
   align-items: center;
   justify-content: space-evenly;
   background: #554fff;
+  height: 80px;
   &__logo {
     display: flex;
     align-items: center;
@@ -46,7 +56,6 @@ export default {
 }
 
 nav {
-  padding: 30px 0;
   display: flex;
   width: 300px;
   justify-content: space-evenly;
